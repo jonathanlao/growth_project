@@ -1,9 +1,33 @@
+{% extends "bootstrap/base.html" %}
+
 <!doctype html>
 <html>
     <head>
       <title>Growth Project</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        {% block content %}
+          <h1>Hello World!!</h1>
+          <table id="data" class="table table-striped">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Address</th>
+                <th>Phone Number</th>
+                <th>Email</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr>
+                  <td>Mouse</td>
+                  <td>24</td>
+                  <td>84 Varet</td>
+                  <td>867-5309</td>
+                  <td>cat@gmail.com</td>
+                </tr>
+            </tbody>
+          </table>
+        {% endblock %}
     </body>
 </html>
