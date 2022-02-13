@@ -1,4 +1,4 @@
-from flask import render_template
+from flask import render_template, request
 from app import app
 import requests
 
@@ -26,5 +26,8 @@ def index():
 
     return render_template('index.html', campaigns=campaigns)
 
+@app.route('/campaign', methods=['GET'])
 def get_campaign():
-    print('here')
+    id = request.args.get('id')
+    print(id)
+    return '22'

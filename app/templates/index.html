@@ -7,14 +7,41 @@
 
       <title>Growth Project</title>
 
-      <style>                    
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+      <script type=text/javascript>
+        $(document).ready(function() {
+          $('tr').click(function() {
+            var $item = $(this).closest("tr")
+                       .find(".campaign_id")
+                       .text(); 
+            
+            $.ajax({
+              type: "GET",
+              url: "campaign",
+              data: {id: $item},
+              contentType: "application/json; charset=utf-8",
+              dataType: "json",
+              // success: fu,
+              // failure: function(response) {
+              //     alert(response.d);
+              // }
+            });
+          });
+        });
+      </script>
 
+      <style>                    
+        #clickable tr:hover {
+            background-color: #ccc;
+            cursor: pointer;
+        }
       </style>
+
     </head>
     <body>
         {% block content %}
           <h1>Campaign Dashboard</h1>
-          <table class="table table-striped table-bordered table-hover">
+          <table id="clickable" class="table table-striped table-bordered table-hover">
             <thead class="table-dark">
               <tr>
                 <th>Id</th>
@@ -24,8 +51,8 @@
             </thead>
             <tbody>
               {% for campaign in campaigns %}
-                <tr onclick={get_campaign()}>
-                  <td>{{campaign.id}}</td>
+                <tr>
+                  <td class="campaign_id">{{campaign.id}}</td>
                   <td>{{campaign.name}}</td>
                   <td>{{', '.join(campaign.tags)}}</td>
                 </tr>
