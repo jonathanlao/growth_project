@@ -1,4 +1,4 @@
-from flask import render_template
+from flask import render_template, Response
 from app import app
 from datetime import datetime
 import requests
@@ -7,9 +7,7 @@ URL = 'https://rest.iad-01.braze.com/'
 API_KEY = '63462b71-be35-4dc6-a15c-8b9374cc3ba2'
 HEADER = {"Authorization": "Bearer " + API_KEY}
 
-@app.route('/')
-@app.route('/index')
-def index():
+def get_campaign_list():
     campaign_list_uri = '/campaigns/list'
     params = {
         'page': 0,
@@ -19,7 +17,13 @@ def index():
     }
     res = requests.get(URL + campaign_list_uri, headers=HEADER, params=params)
     campaigns = res.json()['campaigns']
+    return campaigns
 
+@app.route('/')
+@app.route('/index')
+def index():
+    campaigns = get_campaign_list()
+    print(campaigns)
     # Mock Data
     # [
     #     {'id': 1, 'name': 'Campaign 1', 'tags': ['marketing', 'promotional']},
@@ -50,3 +54,20 @@ def campaign(id):
     print(details)
 
     return render_template('campaign.html', details=details, analytics=analytics)
+
+@app.route('/download', methods=['GET'])
+def download():
+    campaigns = get_campaign_list()
+    csv = ''
+    for campaign in campaigns:
+        id = campaign['id']
+        name = campaign['name']
+        if not name:
+            name = ''
+        csv = csv + ','.join([id, name] + campaign['tags']) + '\n'
+
+    return Response(
+        csv,
+        mimetype="text/csv",
+        headers={"Content-disposition":"attachment; filename=campaigns.csv"}
+    )

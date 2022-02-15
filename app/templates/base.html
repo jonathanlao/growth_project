@@ -14,10 +14,16 @@
             let campaign_id = $(this).closest("tr")
                        .find(".campaign_id")
                        .text(); 
-            
-            location.href = 'campaign/' + campaign_id
+            if (campaign_id) {
+                location.href = 'campaign/' + campaign_id
+            }  
           });
         });
+        
+        function download() {
+            location.href = 'download'
+        }
+
       </script>
 
       <style>                    
