@@ -1,4 +1,4 @@
-from flask import render_template, request
+from flask import render_template
 from app import app
 from datetime import datetime
 import requests
@@ -29,9 +29,8 @@ def index():
 
     return render_template('index.html', campaigns=campaigns)
 
-@app.route('/campaign', methods=['GET'])
-def get_campaign():
-    id = request.args.get('id')
+@app.route('/campaign/<id>', methods=['GET'])
+def campaign(id):
     campaign_analytics_uri = '/campaigns/data_series'
     params = {
         'campaign_id': id,
@@ -42,13 +41,12 @@ def get_campaign():
     analytics = res.json()
     # print(analytics)
 
-
     campaign_details_uri = '/campaigns/details'
     params = {
         'campaign_id': id,
     }
     res = requests.get(URL + campaign_details_uri, headers=HEADER, params=params)
     details = res.json()
-    # print(details)
+    print(details)
 
-    return render_template('index.html', details=details, analytics=analytics)
+    return render_template('campaign.html', details=details, analytics=analytics)
