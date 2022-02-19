@@ -101,4 +101,4 @@ Thanks to the following resources, without whom, this project could not be possi
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-[braze-logo]: images/screenshot.png
+[braze-logo]: braze.png
