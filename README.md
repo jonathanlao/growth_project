@@ -18,11 +18,10 @@ Follow these steps to get this application running locally.
 ### Prerequisites
 
 This project requires Python3. See: https://www.python.org/downloads/
-  
+
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 ### Installation
-
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
 
 1. Follow up with your Customer Success representative to get your company's API key.
 2. Clone the repo
