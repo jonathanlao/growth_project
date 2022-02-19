@@ -1,10 +1,10 @@
 from flask import render_template, Response
 from app import app
 import requests
+import os
 
 URL = 'https://rest.iad-01.braze.com/'
-API_KEY = '63462b71-be35-4dc6-a15c-8b9374cc3ba2'
-HEADER = {"Authorization": "Bearer " + API_KEY}
+HEADER = {"Authorization": "Bearer " + os.environ.get('API_KEY')}
 
 def get_campaign_list():
     campaign_list_uri = '/campaigns/list'
