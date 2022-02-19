@@ -7,6 +7,41 @@
         <p>{{details.description}}</p>
     {% endif %}
 
-        
+    <table class="table table-striped table-bordered table-hover">
+        <thead class="table-dark">
+          <tr>
+            <th>Date</th>
+            <th>Channel</th>
+            <th>Variation Name</th>
+            <th>Sent</th>
+            <th>Direct Opens</th>
+            <th>Total Opens</th>
+            <th>Bounces</th>
+            <th>Body Clicks</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for stat in analytics %}
+              {% for message_type, messages in stat.messages.items() %}
+                {% for message in messages %}
+                    <tr>
+                        <td>{{stat.time}}</td>
+                        <td>{{message_type}}</td>
+                        {% if message.variation_name %}
+                            <td>{{message.variation_name}}</td>
+                        {% else %}
+                            <td>None</td>
+                        {% endif %}
+                        <td>{{message.sent}}</td>
+                        <td>{{message.direct_opens}}</td>
+                        <td>{{message.total_opens}}</td>
+                        <td>{{message.bounces}}</td>
+                        <td>{{message.body_clicks}}</td>
+                    </tr>
+                {% endfor %}
+              {% endfor %}
+          {% endfor %}
+        </tbody>
+    </table>
 
 {% endblock %}

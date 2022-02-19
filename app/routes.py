@@ -1,6 +1,5 @@
 from flask import render_template, Response
 from app import app
-from datetime import datetime
 import requests
 
 URL = 'https://rest.iad-01.braze.com/'
@@ -23,7 +22,7 @@ def get_campaign_list():
 @app.route('/index')
 def index():
     campaigns = get_campaign_list()
-    print(campaigns)
+    # print(campaigns)
     # Mock Data
     # [
     #     {'id': 1, 'name': 'Campaign 1', 'tags': ['marketing', 'promotional']},
@@ -38,12 +37,12 @@ def campaign(id):
     campaign_analytics_uri = '/campaigns/data_series'
     params = {
         'campaign_id': id,
-        'length': 2,
-        'ending_at': datetime.now().isoformat()
+        'length': 30,
     }
     res = requests.get(URL + campaign_analytics_uri, headers=HEADER, params=params)
-    analytics = res.json()
-    # print(analytics)
+    analytics = res.json()['data']
+    analytics.reverse()
+    print(analytics)
 
     campaign_details_uri = '/campaigns/details'
     params = {
@@ -51,7 +50,7 @@ def campaign(id):
     }
     res = requests.get(URL + campaign_details_uri, headers=HEADER, params=params)
     details = res.json()
-    print(details)
+    # print(details)
 
     return render_template('campaign.html', details=details, analytics=analytics)
 
