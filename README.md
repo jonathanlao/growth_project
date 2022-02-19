@@ -65,7 +65,7 @@ See the requirements listed [here](https://confluence.braze.com/pages/viewpage.a
 "All push message types will have the same statistics shown for `android_push` above." The image shows `sent`, `direct_opens`, `total_opens`, `bounces`, and `body_clicks`.
 That seemed like good baseline stats to show for each channel and therefore that is what analytics are displayed. But according to [other documentation](https://www.braze.com/docs/user_guide/data_and_analytics/report_metrics/),
 as well as judging by the actual response data I was getting back, that seems to not actually be the case. Moreover, I'm not sure what "body click" would even mean for a channel like email.
-4. The assignment instructions seemed to perhaps imply that "relevant stats" should appear in a single dashboard page. However, there did not seem to be an easy way to get statistics for multiple camapgins in a single API call.
+4. The assignment instructions seemed to perhaps imply that "relevant stats" should appear in a single dashboard page. However, there did not seem to be an easy way to get statistics for multiple campaigns in a single API call.
 Rather than getting analytics for every campaign listed all at once (which could be a lot of API calls), I chose to design it such that the user needs to click on a campaign to view more information.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
