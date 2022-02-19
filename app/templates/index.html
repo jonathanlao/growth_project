@@ -2,8 +2,14 @@
 
 {% block content %}
   <h1>Campaign Dashboard</h1>
-  <button onclick="download()">Download</button>
-  <table class="table table-striped table-bordered table-hover">
+  <button class="download" onclick="download()">Download</button>
+  <br>
+  <br>
+  <input class="form-control" id="filter" type="text" placeholder="Search..">
+  <br>
+  <table class="table table-striped table-bordered table-hover" 
+    data-filter-control="true"
+    data-show-search-clear-button="true">
     <thead class="table-dark">
       <tr>
         <th>Id</th>

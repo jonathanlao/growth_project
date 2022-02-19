@@ -4,7 +4,13 @@
 
 [![Braze Logo][braze-logo]](https://braze.com)
 
-This is the take home project for Braze's Growth team.
+This is the take home project for Braze's Growth team. I time-boxed myself approximately six hours for this project. A rough breakdown of effort looks like:
+
+- 2 hours to play with the API and read the documentation
+- 2 hours to learn the basics of Flask and Bootstrap
+- 2 hours to create the application and display the data
+
+See the "Assumptions" and "Roadmap" sections below for more information about design decisions and what I would have done given more time.
 
 ### Built With
 
@@ -68,12 +74,24 @@ Rather than getting analytics for every campaign listed all at once (which could
 <!-- ROADMAP -->
 ## Roadmap
 
+### Current Roadmap
+
 - [x] Landing Page
 - [x] Campaign details and analytics page
 - [x] Landing page download button
 - [x] README
-- [ ] Filter and search
+- [x] Filter and search
 - [ ] Product Feedback
+
+### Given More Time
+- [ ] Separate filter for tags using a dropdown
+- [ ] Specify a date range for metrics
+- [ ] Aggregate stat details, like total opens overall
+
+### Deprioritized
+
+- [ ] Better front-end design
+- [ ] Separating css and js files
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
