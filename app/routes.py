@@ -8,11 +8,11 @@ HEADER = {"Authorization": "Bearer " + os.environ.get('API_KEY')}
 
 def get_campaign_list():
     campaign_list_uri = '/campaigns/list'
+
     params = {
         'page': 0,
         'include_archived': False,
         'sort_direction': 'asc',
-        'last_edit.time[gt]': '2021-02-14T23:59:59-5:00'
     }
     res = requests.get(URL + campaign_list_uri, headers=HEADER, params=params)
     campaigns = res.json()['campaigns']
